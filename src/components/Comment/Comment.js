@@ -1,10 +1,10 @@
 import style from "./Comment.module.css"
 
-const Comment = () => {
+const Comment = ({name, email}) => {
     return ( 
         <div className={style.comment}>
-            <p>name</p>
-            <p>email</p>
+            <p>name : {name}</p>
+            <p>email : {email}</p>
         </div>
      );
 }
