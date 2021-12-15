@@ -6,6 +6,32 @@
     background: #e0e7ff;
     color: #4338ca;
     width: 600px;
-    height: 200px;
+    height: 300px;
     border-radius: 5px;
+}
+.formControl{
+  margin-top: 10px;
+}
+.formControl input{
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    outline: none;
+    border-radius: 5px;
+}
+.newComment button{
+    display: flex;
+    align-items: center;
+    outline: none;
+    padding: 5px 10px;
+    background-color: #dee5fd;
+    color: #4338ca;
+    border-radius: 5px;
+    border: 1px solid #4338ca;
+    margin: 20px 0;
+}
+.newComment h2{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 20px;
 }
