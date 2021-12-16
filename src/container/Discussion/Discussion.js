@@ -30,6 +30,8 @@ const Discussion = () => {
 
     }
 
+    // 4 comment => 3 comment => setComment(res.data) => clickHandler()
+
     return ( 
         <main className={style.discussion}>
             <section>

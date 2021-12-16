@@ -6,7 +6,18 @@
     background: #e0e7ff;
     color: #4338ca;
     width: 600px;
-    height: 200px;
+    height: 260px;
     border-radius: 5px;
     margin: 20px 0;
+}
+.fullComment button{
+    display: flex;
+    align-items: center;
+    outline: none;
+    padding: 5px 10px;
+    background-color: #fff;
+    color: red;
+    border-radius: 5px;
+    border: 1px solid red;
+    margin: 10px 0;
 }
