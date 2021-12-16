@@ -4,21 +4,22 @@ import style from "./FullComment.module.css";
 
 const FullComment = ({ commentId }) => {
     const[comment, setComment] = useState("");
+
     useEffect(() => {
       if(commentId){
         axios
-        .get(`https://jsonplaceholder.typicode.com/comments/${commentId}`)
-        .then((res) =>{
-          // 10 user => id : 1 => axios.delete() => 0k !  9 user => res.data : 9 user => setState()
-        }) 
+        .get(`http://localhost:3001/comments/${commentId}`)
+        .then((res) => setComment(res.data)) 
         .catch()
       }
      },[commentId])
 
      const deleteHandler = () => {
        axios
-       .delete(`https://jsonplaceholder.typicode.com/comments/${commentId}`)
-       .then((res) => console.log(res.data))
+       .delete(`http://localhost:3001/comments/${commentId}`)
+       .then((res) => {
+         // 10 user => id : 1 => axios.delete() => 0k !  9 user => res.data : 9 user => setState()
+       })
        .catch((err) => console.log(err))
      }
 
