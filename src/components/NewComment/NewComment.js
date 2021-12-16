@@ -9,16 +9,9 @@ const NewComment = () => {
         content : "",
     })
 
-    const nameHandler = (e) => {
-        setComment({...comment, name : e.target.value});
-    }
-    
-    const emailHandler = (e) => {
-        setComment({...comment, email : e.target.value});
-    }
-
-    const contentHandler = (e) => {
-        setComment({...comment, content : e.target.value});
+    const changeHandler = (e) => {
+        console.log(e.target.name, e.target.value)
+        setComment({ ...comment, [e.target.name] : e.target.value });
     }
 
     const postCommentHandler = () => {
@@ -33,15 +26,15 @@ const NewComment = () => {
             <h2>Add New Comment</h2>
             <div className={style.formControl}>
                 <label>name</label>
-                <input type="text" onChange={nameHandler} />
+                <input type="text" onChange={changeHandler} name="name" />
             </div>
             <div  className={style.formControl}>
                 <label>email</label>
-                <input type="email" onChange={emailHandler} />
+                <input type="email" onChange={changeHandler} name="email" />
             </div>
             <div className={style.formControl}>
                 <label>body</label>
-                <input type="textarea" onChange={contentHandler} />
+                <input type="textarea" onChange={changeHandler} name="content" />
             </div>
             <button onClick={postCommentHandler}>Add New Comment</button>
         </div>
