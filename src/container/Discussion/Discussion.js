@@ -15,9 +15,9 @@ const Discussion = () => {
      const getComments = async () => {
         try {
          const {data} = await axios.get("http://localhost:3001/comments")
-             setComments(data)
+             setComments(data.slice(0, 4))
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             setError(true)
         }
      }
@@ -30,21 +30,26 @@ const Discussion = () => {
 
     }
 
+    const renderComments = () => {
+        let renderValue = <p>Loading ...</p>
+        if(error) renderValue = <p>fetching data faild !</p>
+        if(comments && !error){
+            renderValue =  comments.map((c) => (
+                <Comment 
+                  key={c.id} 
+                  name={c.name} 
+                  email={c.email} 
+                  onClick={() => selectCommentHandler(c.id)}
+                />
+              ))
+        }
+        return renderValue;
+    }
+
     return ( 
         <main className={style.discussion}>
             <section>
-              {comments ? (
-                  comments.map((c) => (
-                    <Comment 
-                      key={c.id} 
-                      name={c.name} 
-                      email={c.email} 
-                      onClick={() => selectCommentHandler(c.id)}
-                    />
-                  ))
-                ) : (
-                 <p>Loading ...</p>
-                )}
+             {renderComments()}
             </section>
             <section>
                 <FullComment commentId={selectedId} />
