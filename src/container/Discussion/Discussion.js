@@ -7,18 +7,18 @@ import style from "./Discussion.module.css";
 
 const Discussion = () => {
     const[comments, setComments] = useState(null);
-    const[selectedId, setSelectedId] = useState(null)
+    const[selectedId, setSelectedId] = useState(null);
+    const[error, setError] = useState(false);
 
     useEffect(() => {
     // async function getComments()
      const getComments = async () => {
         try {
-         const {data} = await axios.get(
-             "http://localhost:3001/comments"
-             )
-             setComments(data.slice(0, 4))
+         const {data} = await axios.get("http://localhost:3001/comments")
+             setComments(data)
         } catch (error) {
             console.log(error)
+            setError(true)
         }
      }
     getComments()
@@ -29,9 +29,15 @@ const Discussion = () => {
         setSelectedId(id)
 
     }
-    
-    // 4 comment => 3 comment => setComment(res.data) => clickHandler()
 
+    const postCommentHandler = (comment) => {
+        axios
+        .post("http://localhost:3001/comments", {...comment, postId: 10 })
+        .then((res) => axios.get("http://localhost:3001/comments"))
+        .then((res) => setComments(res.data))
+        .catch()
+    }
+ 
     return ( 
         <main className={style.discussion}>
             <section>
@@ -52,7 +58,7 @@ const Discussion = () => {
                 <FullComment commentId={selectedId} />
             </section>
             <section>
-                <NewComment />
+                <NewComment onAddPost={postCommentHandler} />
             </section>
         </main>
      );
