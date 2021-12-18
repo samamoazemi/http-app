@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import style from "./FullComment.module.css";
 
-const FullComment = ({ commentId }) => {
-    const[comment, setComment] = useState("");
+const FullComment = ({ commentId, setComments }) => {
+    const[comment, setComment] = useState(null);
 
     useEffect(() => {
       if(commentId){
@@ -14,19 +14,21 @@ const FullComment = ({ commentId }) => {
       }
      },[commentId])
 
-     const deleteHandler = () => {
-       axios
-       .delete(`http://localhost:3001/comments/${commentId}`)
-       .then((res) => {
-         // 10 user => id : 1 => axios.delete() => 0k !  9 user => res.data : 9 user => setState()
-       })
-       .catch((err) => console.log(err))
-     }
+     const deleteHandler = async () => {
+      try{
+          await axios.delete(`http://localhost:3001/comments/${commentId}`);
+          const {data} = await axios.get("http://localhost:3001/comments");
+          console.log(data)
+          setComments(data);
+      }
+      catch(error){}
+  };
 
-     let commentDetail = <p> please select a comment !</p>
-     if(commentId) commentDetail = <p>Loading ...</p>
+  let commentDetail = <p> please select a comment</p>;
 
-    if(commentId) {
+  if(commentId) commentDetail =  <p>loading ...</p>;
+
+    if(comment) {
       commentDetail = (
         <div className={style.fullComment}>
         <p>{comment.name}</p>

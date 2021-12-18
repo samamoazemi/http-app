@@ -15,10 +15,10 @@ const Discussion = () => {
     // async function getComments()
      const getComments = async () => {
         try {
-         const {data} = await axios.get("http://localhost:3001/comments/1212")
+         const {data} = await axios.get("http://localhost:3001/comments")
          console.log(data);
             
-             setComments(data.slice(0, 4))
+             setComments(data)
         } catch (error) {
             // console.log(error)
             setError(true)
@@ -58,7 +58,7 @@ const Discussion = () => {
              {renderComments()}
             </section>
             <section>
-                <FullComment commentId={selectedId} />
+                <FullComment commentId={selectedId} setComments={setComments}/>
             </section>
             <section>
                 <NewComment setComments={setComments} />
