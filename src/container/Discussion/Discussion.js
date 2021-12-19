@@ -1,4 +1,4 @@
-import axios from "axios";
+import http from "../../services/httpService";
 import { useEffect, useState } from "react";
 import Comment from "../../components/Comment/Comment"; 
 import FullComment from "../../components/FullComment/FullComment";
@@ -15,12 +15,10 @@ const Discussion = () => {
     // async function getComments()
      const getComments = async () => {
         try {
-         const {data} = await axios.get("http://localhost:3001/comments")
-         console.log(data);
-            
-             setComments(data)
+         const {data} = await http.get("/comments")
+         setComments(data)
         } catch (error) {
-            // console.log(error)
+            console.log(error)
             setError(true)
         }
      }

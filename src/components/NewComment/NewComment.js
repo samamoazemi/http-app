@@ -16,11 +16,11 @@ const NewComment = ({setComments}) => {
 
      const postCommentHandler = async () => {
         try {
-            await axios.post("http://localhost:3001/comments", { 
+            await axios.post("/comments", { 
                 ...comment,
                  postId: 10,
             });
-            const {data} = await axios.get("http://localhost:3001/comments");
+            const {data} = await axios.get("/comments");
             setComments(data);
 
         } catch(error) {}

@@ -8,7 +8,7 @@ const FullComment = ({ commentId, setComments, setSelectedId }) => {
     useEffect(() => {
       if(commentId){
         axios
-        .get(`http://localhost:3001/comments/${commentId}`)
+        .get(`/comments/${commentId}`)
         .then((res) => setComment(res.data)) 
         .catch()
       }
@@ -16,8 +16,8 @@ const FullComment = ({ commentId, setComments, setSelectedId }) => {
 
      const deleteHandler = async () => {
       try{
-          await axios.delete(`http://localhost:3001/comments/${commentId}`)
-          const {data} = await axios.get("http://localhost:3001/comments")
+          await axios.delete(`/comments/${commentId}`)
+          const {data} = await axios.get("/comments")
           console.log(data)
           setComments(data)
           setSelectedId(null)
