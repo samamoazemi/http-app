@@ -1,10 +1,10 @@
-import Discussion from "../container/Discussion/Discussion";
+import Comments from "../components/Comments/Comments";
 
 const HomePage = () => {
     return (
         <>
          <h2 className="allComment">Here is all the comments !</h2>
-         <Discussion/>
+         <Comments />
         </>
      );
 }

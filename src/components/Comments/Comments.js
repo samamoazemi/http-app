@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import Comment from "../../components/Comment/Comment"; 
-import FullComment from "../../components/FullComment/FullComment";
-import NewComment from "../../components/NewComment/NewComment";
-import style from "./Discussion.module.css";
+import Comment from "./Comment/Comment"; 
+import style from "./Comments.module.css";
 import { toast } from 'react-toastify';
 import { getAllComments } from "../../services/getAllCommentsService";
 import { Link } from "react-router-dom";
 
-const Discussion = () => {
+const Comments = () => {
     const[comments, setComments] = useState(null);
-    const[selectedId, setSelectedId] = useState(null);
     const[error, setError] = useState(false);
 
     useEffect(() => {
@@ -27,11 +24,6 @@ const Discussion = () => {
 
     },[]);
 
-    const selectCommentHandler = (id) => {
-        setSelectedId(id)
-
-    }
-
     const renderComments = () => {
         let renderValue = <p>Loading ...</p>
         if(error){
@@ -43,8 +35,7 @@ const Discussion = () => {
                 <Link to={`/comment/${c.id}`} key={c.id} >
                  <Comment 
                   name={c.name} 
-                  email={c.email} 
-                  onClick={() => selectCommentHandler(c.id)}
+                  email={c.email}
                 />
                 </Link>
               ))
@@ -52,21 +43,7 @@ const Discussion = () => {
         return renderValue;
     }
 
-    return ( 
-        <main className={style.discussion}>
-            <section>{renderComments()}</section>
-            {/* <section>
-                <FullComment 
-                  commentId={selectedId} 
-                  setComments={setComments}
-                  setSelectedId={setSelectedId}
-                />
-            </section>
-            <section>
-                <NewComment setComments={setComments} />
-            </section> */}
-        </main>
-     );
+    return <section>{renderComments()}</section>;
 }
  
-export default Discussion;
+export default Comments;
