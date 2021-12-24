@@ -5,8 +5,10 @@ import { deleteComment } from "../../services/deleteCommentService";
 import { getAllComments } from "../../services/getAllCommentsService";
 import { getOneComment } from "../../services/getOneCommentService";
 
-const FullComment = ({ commentId, setComments, setSelectedId }) => {
-    const[comment, setComment] = useState(null);
+const FullComment = ({ setComments, setSelectedId, match }) => {
+
+  const commentId = match.params.id;
+  const[comment, setComment] = useState(null);
 
     useEffect(() => {
       if (commentId) {
@@ -34,11 +36,13 @@ const FullComment = ({ commentId, setComments, setSelectedId }) => {
 
     if(comment) {
       commentDetail = (
-        <div className={style.fullComment}>
-        <p>{comment.name}</p>
-        <p>{comment.email}</p>
-        <p>{comment.body}</p> 
-        <button onClick={deleteHandler}>Delete</button>
+        <div className={style.fullCommentRow}>
+            <div className={style.fullComment}>
+              <p>{comment.name}</p>
+              <p>{comment.email}</p>
+              <p>{comment.body}</p> 
+              <button onClick={deleteHandler}>Delete</button>
+            </div>
         </div>
       )
     }

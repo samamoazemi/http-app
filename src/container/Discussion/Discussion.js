@@ -5,6 +5,7 @@ import NewComment from "../../components/NewComment/NewComment";
 import style from "./Discussion.module.css";
 import { toast } from 'react-toastify';
 import { getAllComments } from "../../services/getAllCommentsService";
+import { Link } from "react-router-dom";
 
 const Discussion = () => {
     const[comments, setComments] = useState(null);
@@ -39,12 +40,13 @@ const Discussion = () => {
         }
         if(comments && !error){
             renderValue =  comments.map((c) => (
-                <Comment 
-                  key={c.id} 
+                <Link to={`/comment/${c.id}`} key={c.id} >
+                 <Comment 
                   name={c.name} 
                   email={c.email} 
                   onClick={() => selectCommentHandler(c.id)}
                 />
+                </Link>
               ))
         }
         return renderValue;

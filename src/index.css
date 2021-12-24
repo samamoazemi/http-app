@@ -31,9 +31,10 @@ a{
   ;
 }
 p{
-  margin: 30px 20px;
-  font-size: 19px;
+  margin: 10px 20px;
+  font-size: 17px;
   font-weight: bold;
+  font-family: Arial;
   color: rgb(112, 112, 112);
 }
 footer{
@@ -50,4 +51,11 @@ footer{
 }
 .activeTab{
   color: rgb(128, 55, 197);
+}
+.allComment{
+  margin: 30px auto 10px auto;
+  font-family: Arial;
+  font-weight: bold;
+  color: rgb(87, 87, 87);
+
 }

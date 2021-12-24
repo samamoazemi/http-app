@@ -1,8 +1,11 @@
 import Discussion from "../container/Discussion/Discussion";
 
 const HomePage = () => {
-    return ( 
-        <Discussion/>
+    return (
+        <>
+         <h2 className="allComment">Here is all the comments !</h2>
+         <Discussion/>
+        </>
      );
 }
  
