@@ -25,22 +25,24 @@ const NewComment = ({setComments}) => {
         } catch(error) {}
     };
 
-    return ( 
-        <div className={style.newComment}>
-            <h2>Add New Comment</h2>
-            <div className={style.formControl}>
-                <label>name</label>
-                <input type="text" onChange={changeHandler} name="name" />
+    return (
+        <div className={style.addNewCommentRow}>
+            <div className={style.newComment}>
+                <h2>Add New Comment</h2>
+                <div className={style.formControl}>
+                    <label>name</label>
+                    <input type="text" onChange={changeHandler} name="name" />
+                </div>
+                <div  className={style.formControl}>
+                    <label>email</label>
+                    <input type="email" onChange={changeHandler} name="email" />
+                </div>
+                <div className={style.formControl}>
+                    <label>body</label>
+                    <input type="textarea" onChange={changeHandler} name="content" />
+                </div>
+                <button onClick={postCommentHandler}>Add New Comment</button>
             </div>
-            <div  className={style.formControl}>
-                <label>email</label>
-                <input type="email" onChange={changeHandler} name="email" />
-            </div>
-            <div className={style.formControl}>
-                <label>body</label>
-                <input type="textarea" onChange={changeHandler} name="content" />
-            </div>
-            <button onClick={postCommentHandler}>Add New Comment</button>
         </div>
      );
 }

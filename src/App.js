@@ -1,14 +1,23 @@
 
 import './App.css';
-import Discussion from './container/Discussion/Discussion';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { Route, Switch } from "react-router-dom";
+import Layout from "./Layout/Layout";
+import routes from "./routes";
 
 function App() {
   return (
     <div className="App">
      <ToastContainer />
-     <Discussion />
+     <Layout>
+        <Switch>
+          {routes.map((route, index) => (
+            <Route {...route} key={index}/>
+          ))}
+        </Switch>
+      </Layout>
     </div>
   );
 }
