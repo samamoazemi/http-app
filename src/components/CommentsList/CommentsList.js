@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Comment from "./Comment/Comment"; 
-import style from "./Comments.module.css";
+import Comment from "./Comments/Comments"; 
+import style from "./CommentsList.module.css";
 import { toast } from 'react-toastify';
 import { getAllComments } from "../../services/getAllCommentsService";
 import { Link } from "react-router-dom";
 
-const Comments = () => {
+const CommentsList = () => {
     const[comments, setComments] = useState(null);
     const[error, setError] = useState(false);
 
@@ -46,4 +46,4 @@ const Comments = () => {
     return <section>{renderComments()}</section>;
 }
  
-export default Comments;
+export default CommentsList;

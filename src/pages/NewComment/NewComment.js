@@ -1,10 +1,8 @@
-import axios from "axios";
 import { useState } from "react";
 import style from "./NewComment.module.css";
 import { addNewComment } from "../../services/addNewCommentService";
-import { getAllComments } from "../../services/getAllCommentsService";
 
-const NewComment = ({setComments}) => {
+const NewComment = ({history}) => {
     const[comment, setComment] = useState({
         name : "",
         email : "",
@@ -18,10 +16,8 @@ const NewComment = ({setComments}) => {
 
      const postCommentHandler = async () => {
         try {
-            await addNewComment({ ...comment, postId: 10 });
-            const {data} = await getAllComments();
-            setComments(data);
-            
+          await addNewComment({ ...comment, postId: 10 });
+          history.push("/");
         } catch(error) {}
     };
 

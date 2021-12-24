@@ -1,6 +1,6 @@
-import style from "./Comment.module.css"
+import style from "./Comments.module.css"
 
-const Comment = ({name, email, onClick}) => {
+const Comments = ({name, email, onClick}) => {
     return ( 
         <div className={style.comment} onClick={onClick} >
             <p>name : {name}</p>
@@ -9,4 +9,4 @@ const Comment = ({name, email, onClick}) => {
      );
 }
  
-export default Comment;
+export default Comments;
